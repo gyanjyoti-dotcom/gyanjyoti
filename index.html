@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src https://www.youtube-nocookie.com https://maps.google.com https://www.google.com; upgrade-insecure-requests">
+    <title>Gyanjyoti Pathshala - Center of Excellence</title>
+    
+    <!-- SEO & Social Media Meta Tags -->
+    <meta name="description" content="Gyanjyoti Pathshala is committed to fostering academic excellence, moral integrity, and holistic development from Pre-Primary to Grade 10.">
+    <meta property="og:title" content="Gyanjyoti Pathshala - Center of Excellence">
+    <meta property="og:description" content="Quality Education from Pre-Primary to Grade 10 in Kathmandu, Nepal.">
+    <meta property="og:image" content="school-logo.png">
+    <meta property="og:url" content="https://gyanjyotipathshala.netlify.app">
+
+    <!-- Font Awesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <style>
+        :root {
+            --primary: #122830;
+            --primary-light: #203a43;
+            --accent: #f2a900;
+            --accent-hover: #d99600;
+            --footer-bg: #274b8e;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- TOP HEADER --- */
+        .top-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 12px 0;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-section img {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        .school-name h1 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .school-name p {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .top-contact {
+            display: flex;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        .contact-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item small {
+            font-size: 10px;
+            color: #94a3b8;
+        }
+
+        .contact-item span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--primary);
+            padding: 15px 0;
+            width: 100%;
+            text-align: right;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar > .nav-container > ul > li {
+            position: relative;
+        }
+
+        .navbar > .nav-container > ul > li > a {
+            display: block;
+            color: var(--primary);
+            padding: 18px 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .navbar > .nav-container > ul > li > a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0%;
+            height: 3.5px;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .navbar > .nav-container > ul > li:hover > a,
+        .navbar > .nav-container > ul > li > a.active {
+            color: var(--accent);
+        }
+
+        .navbar > .nav-container > ul > li:hover > a::after,
+        .navbar > .nav-container > ul > li > a.active::after {
+            width: 100%;
+        }
+
+        /* RIGHT-ALIGNED STAFF LOGIN BUTTON */
+        .navbar > .nav-container > ul > li.login-item {
+            margin-left: auto;
+        }
+
+        .login-btn-nav {
+            background: var(--footer-bg) !important;
+            color: #ffffff !important;
+            border-radius: 6px;
+            padding: 8px 16px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 10px rgba(39, 75, 142, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .login-btn-nav:hover {
+            background: var(--primary) !important;
+            color: var(--accent) !important;
+        }
+
+        .login-btn-nav::after {
+            display: none !important;
+        }
+
+        /* Dropdown Menu */
+        .navbar ul li ul.dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 240px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border-radius: 0 0 10px 10px;
+            z-index: 9999;
+            border-top: 3px solid var(--accent);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .navbar ul li ul.dropdown li a {
+            padding: 12px 20px;
+            font-size: 12.5px;
+            color: var(--text-dark);
+            display: block;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f5f9;
+            transition: var(--transition);
+        }
+
+        .navbar ul li ul.dropdown li a:hover {
+            background: #fffbeb;
+            color: var(--primary);
+            padding-left: 25px;
+        }
+
+        .navbar ul li:hover > ul.dropdown {
+            display: block;
+        }
+
+        /* --- STAFF LOGIN MODAL & SHAKE STYLES --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(18, 40, 48, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            width: 90%;
+            max-width: 420px;
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: popup 0.3s ease-out;
+        }
+
+        @keyframes popup {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .shake-modal {
+            animation: shake 0.4s ease-in-out !important;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 26px;
+            cursor: pointer;
+            color: #64748b;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover { color: #ef4444; }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-header i {
+            font-size: 38px;
+            color: #274b8e;
+            margin-bottom: 8px;
+        }
+
+        .login-header h3 { color: #1e293b; font-size: 20px; font-weight: 700; }
+        .login-header p { font-size: 12px; color: #64748b; }
+
+        .modal-box .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .modal-box label {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .modal-box input, .modal-box select {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .modal-box input:focus, .modal-box select:focus {
+            border-color: #274b8e;
+            box-shadow: 0 0 0 3px rgba(39, 75, 142, 0.1);
+        }
+
+        .input-error {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+
+        .login-error-msg {
+            display: none;
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fca5a5;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .portal-login-btn {
+            width: 100%;
+            background: #274b8e;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: 0.3s;
+        }
+
+        .portal-login-btn:hover { background: #122830; }
+
+        /* --- SLIDER --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.65);
+            transform: scale(1.05);
+            transition: transform 6s ease;
+        }
+
+        .slide.active img {
+            transform: scale(1);
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 60px;
+            left: 8%;
+            right: 8%;
+            color: white;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .slide.active .slide-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-caption h2 {
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .slide-caption p {
+            font-size: 16px;
+            color: var(--accent);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 50%;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .slider-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        .dots-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--accent);
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        /* --- WELCOME CARD --- */
+        .welcome-section {
+            padding: 45px 0 20px 0;
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 16px;
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1050px;
+            box-shadow: 0 15px 35px rgba(18, 40, 48, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(242, 169, 0, 0.2);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .welcome-card h2 {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .welcome-card p {
+            font-size: 13.5px;
+            line-height: 1.8;
+            color: #cbd5e1;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* --- NOTICES SECTION --- */
+        .notice-section {
+            width: 90%;
+            max-width: 1050px;
+            margin: 40px auto 60px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-transform: capitalize;
+        }
+
+        .section-title span {
+            color: var(--footer-bg);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 5px;
+        }
+
+        .notice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .notice-card {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .notice-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.09);
+            border-color: #cbd5e1;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .card-badge.admission { background: #10b981; }
+        .card-badge.event { background: #8b5cf6; }
+        .card-badge.ptm { background: #f59e0b; }
+
+        .notice-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 10px 0 12px 0;
+            line-height: 1.5;
+            padding-right: 60px;
+        }
+
+        .notice-meta {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .notice-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .notice-meta i {
+            color: var(--footer-bg);
+        }
+
+        .notice-desc {
+            font-size: 12.5px;
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .notice-footer-action {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .read-more-btn {
+            background-color: var(--footer-bg);
+            color: #ffffff;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .read-more-btn:hover {
+            background-color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .view-all-container {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #ffffff;
+            padding: 12px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(18, 40, 48, 0.2);
+            transition: var(--transition);
+        }
+
+        .view-all-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(242, 169, 0, 0.3);
+        }
+
+        /* --- FOOTER STYLES --- */
+        .main-footer {
+            background-color: var(--footer-bg);
+            color: #ffffff;
+            padding-top: 50px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1.5fr 0.8fr 1fr;
+            gap: 35px;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .title-underline {
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.25);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .title-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo img {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+            object-fit: cover;
+        }
+
+        .footer-logo-text h3 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-logo-text p {
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        .links-grid {
+            display: flex;
+            gap: 30px;
+        }
+
+        .links-grid ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .links-grid ul li {
+            margin-bottom: 10px;
+        }
+
+        .links-grid ul li a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .links-grid ul li a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: white;
+            color: var(--footer-bg);
+            transform: translateY(-4px);
+        }
+
+        .footer-contact-info {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            margin-bottom: 14px;
+            color: #e2e8f0;
+        }
+
+        .footer-contact-info li i {
+            font-size: 15px;
+            color: var(--accent);
+            width: 18px;
+        }
+
+        .footer-bottom {
+            background-color: #1a3466;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 12.5px;
+            color: #94a3b8;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media screen and (max-width: 992px) {
+            .top-contact { display: none; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            }
+            .navbar ul.show-menu { display: flex; }
+            .navbar > .nav-container > ul > li { width: 100%; border-bottom: 1px solid #f1f5f9; }
+            .navbar > .nav-container > ul > li > a { padding: 14px 20px; }
+            .navbar > .nav-container > ul > li > a::after { display: none; }
+            .navbar ul li ul.dropdown { position: static; box-shadow: none; width: 100%; background: #f8fafc; padding-left: 15px; border-top: none; }
+            .navbar ul li.open-dropdown > ul.dropdown { display: block; }
+            
+            .navbar > .nav-container > ul > li.login-item { margin-left: 0; }
+            .login-btn-nav { margin: 10px 20px !important; text-align: center; justify-content: center; }
+            
+            .notice-grid { grid-template-columns: 1fr; }
+            .slider-container { height: 300px; }
+            .slide-caption h2 { font-size: 22px; }
+            .slide-caption p { font-size: 13px; }
+        }
+
+        @media screen and (max-width: 600px) {
+            .footer-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <div class="top-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="school-logo.png" alt="Gyanjyoti Pathshala Logo" onerror="this.src='https://via.placeholder.com/55?text=Logo'">
+                <div class="school-name">
+                    <h1>GYANJYOTI PATHSHALA</h1>
+                    <p>ज्ञानज्योति पाठशाला</p>
+                </div>
+            </div>
+            <div class="top-contact">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <small>Call Us</small>
+                        <span>+977-01-XXXXXXX</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <small>Email Us</small>
+                        <span>info@gyanjyoti.edu.np</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars"></i> MENU
+            </button>
+            <ul id="navMenu">
+                <li>
+                    <a href="index.html"><i class="fas fa-home"></i> HOME</a>
+                </li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn"><i class="fas fa-info-circle"></i> ABOUT US <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="about.html">Message From Principal</a></li>
+                        <li><a href="about.html">Vision & Mission</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn"><i class="fas fa-graduation-cap"></i> ACADEMICS <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="school-details.html?type=students">Students Details</a></li>
+                        <li><a href="school-details.html?type=classes">Classes Details</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn"><i class="fas fa-images"></i> GALLERY & LINKS <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="gallery.html">Video Gallery</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="notice.html"><i class="fas fa-bullhorn"></i> NOTICE</a>
+                </li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn"><i class="fas fa-id-card"></i> PROFILE <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="profile.html?type=management">MANAGEMENT COMMITTEE</a></li>
+                        <li><a href="profile.html?type=teaching">TEACHING STAFF</a></li>
+                        <li><a href="profile.html?type=admin">ADMINISTRATION STAFF</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> CONTACT US</a>
+                </li>
+                <!-- STAFF LOGIN BUTTON -->
+                <li class="login-item">
+                    <a href="javascript:void(0)" class="login-btn-nav" onclick="openLoginModal()"><i class="fas fa-lock"></i> STAFF LOGIN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- SLIDER SECTION -->
+    <div class="slider-container">
+        <div class="slide active">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200" alt="School Campus" onerror="this.src='https://via.placeholder.com/1200x420?text=Campus+Building'">
+            <div class="slide-caption">
+                <h2>Welcome to Gyanjyoti Pathshala</h2>
+                <p>Nurturing Character, Inspiring Minds & Building Future Leaders</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200" alt="Classroom Learning" onerror="this.src='https://via.placeholder.com/1200x420?text=Modern+Classroom'">
+            <div class="slide-caption">
+                <h2>Excellence in Education</h2>
+                <p>Modern Teaching Methodologies Integrated with Strong Ethical Values</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1200" alt="Sports & Activities" onerror="this.src='https://via.placeholder.com/1200x420?text=Holistic+Development'">
+            <div class="slide-caption">
+                <h2>Holistic Development</h2>
+                <p>Empowering Students Through Sports, Arts, and Interactive Learning</p>
+            </div>
+        </div>
+
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="dots-container">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </div>
+
+    <!-- WELCOME CARD -->
+    <section class="welcome-section">
+        <div class="welcome-card fade-in">
+            <span class="badge">Center of Academic Excellence</span>
+            <h2>Empowering Young Minds for a Brighter Tomorrow</h2>
+            <p>At Gyanjyoti Pathshala, we provide a holistic learning environment that balances academic rigor with personal growth. Our modern facilities, dedicated faculty, and innovative curriculum ensure that every child reaches their fullest potential.</p>
+        </div>
+    </section>
+
+    <!-- NOTICES SECTION -->
+    <section class="notice-section fade-in">
+        <h3 class="section-title">Latest <span>Notices & News</span></h3>
+        <div class="notice-grid">
+            <div class="notice-card">
+                <div>
+                    <span class="card-badge admission">Admission</span>
+                    <h4>Admissions Open for Academic Year 2081/82</h4>
+                    <div class="notice-meta">
+                        <span><i class="far fa-calendar-alt"></i> Chaitra 15, 2080</span>
+                        <span><i class="fas fa-user-edit"></i> Admin Office</span>
+                    </div>
+                    <p class="notice-desc">Application forms are now available online and at the school administration office for Grade Pre-Primary to Grade 9.</p>
+                </div>
+                <div class="notice-footer-action">
+                    <a href="notice.html" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="notice-card">
+                <div>
+                    <span class="card-badge event">Event</span>
+                    <h4>Annual Sports Meet 2080 Announcement</h4>
+                    <div class="notice-meta">
+                        <span><i class="far fa-calendar-alt"></i> Falgun 28, 2080</span>
+                        <span><i class="fas fa-trophy"></i> Sports Dept</span>
+                    </div>
+                    <p class="notice-desc">The upcoming Annual Sports Week will commence from the first week of Baisakh. All house captains are requested to submit participant lists.</p>
+                </div>
+                <div class="notice-footer-action">
+                    <a href="notice.html" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="notice-card">
+                <div>
+                    <span class="card-badge ptm">PTM</span>
+                    <h4>Parent-Teacher Meeting (Final Assessment)</h4>
+                    <div class="notice-meta">
+                        <span><i class="far fa-calendar-alt"></i> Chaitra 02, 2080</span>
+                        <span><i class="fas fa-users"></i> Academic Section</span>
+                    </div>
+                    <p class="notice-desc">Parents are cordially invited to attend the PTM to discuss student progress reports and preparation for upcoming final evaluations.</p>
+                </div>
+                <div class="notice-footer-action">
+                    <a href="notice.html" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="notice-card">
+                <div>
+                    <span class="card-badge">Notice</span>
+                    <h4>Vacation Notice - Festival Celebration</h4>
+                    <div class="notice-meta">
+                        <span><i class="far fa-calendar-alt"></i> Magh 10, 2080</span>
+                        <span><i class="fas fa-bullhorn"></i> Administration</span>
+                    </div>
+                    <p class="notice-desc">The school will remain closed on the occasion of Saraswati Puja. Regular classes will resume from the following Sunday.</p>
+                </div>
+                <div class="notice-footer-action">
+                    <a href="notice.html" class="read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="view-all-container">
+            <a href="notice.html" class="view-all-btn">View All Announcements <i class="fas fa-bullhorn"></i></a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col logo-col">
+                <div class="footer-logo">
+                    <img src="school-logo.png" alt="Gyanjyoti Pathshala Logo" onerror="this.src='https://via.placeholder.com/50?text=Logo'">
+                    <div class="footer-logo-text">
+                        <h3>GYANJYOTI PATHSHALA</h3>
+                        <p>ज्ञानज्योति पाठशाला</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="title-underline"></div>
+                <div class="links-grid">
+                    <ul>
+                        <li><a href="index.html">Admission</a></li>
+                        <li><a href="notice.html">News</a></li>
+                        <li><a href="notice.html">Notice</a></li>
+                        <li><a href="notice.html">Holiday</a></li>
+                        <li><a href="notice.html">Event</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="profile.html?type=teaching">Teacher</a></li>
+                        <li><a href="profile.html?type=admin">Staff</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Social Links</h4>
+                <div class="title-underline"></div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100092568934940" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@khaptad.academy" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <div class="title-underline"></div>
+                <ul class="footer-contact-info">
+                    <li><i class="fas fa-phone"></i> <span>+977-01-XXXXXXX</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>info@gyanjyoti.edu.np</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Jai-5,Dhangadhi, Nepal</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gyanjyoti Pathshala | All Rights Reserved | www.gyanjyoti.edu.np</p>
+        </div>
+    </footer>
+
+    <!-- STAFF LOGIN MODAL POP-UP -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-box" id="modalBox">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <div class="login-header">
+                <i class="fas fa-user-shield"></i>
+                <h3>Staff Portal Login</h3>
+                <p>Gyanjyoti Pathshala Management System</p>
+            </div>
+
+            <!-- Error Banner -->
+            <div id="loginError" class="login-error-msg">
+                <i class="fas fa-exclamation-triangle"></i> Invalid Staff ID or Password!
+            </div>
+
+            <form id="staffLoginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="staffId"><i class="fas fa-id-badge"></i> Staff ID / Username</label>
+                    <input type="text" id="staffId" placeholder="Enter your Staff ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="staffPassword"><i class="fas fa-key"></i> Password</label>
+                    <input type="password" id="staffPassword" placeholder="Enter Password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="staffRole"><i class="fas fa-user-tag"></i> Login As</label>
+                    <select id="staffRole" required>
+                        <option value="teacher">Teacher</option>
+                        <option value="accountant">Accountant / Admin</option>
+                        <option value="admin">Principal / Super Admin</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="portal-login-btn">Login to Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CODE -->
+    <script src="js/auth.js"></script>
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            if (index >= slides.length) currentSlideIndex = 0;
+            if (index < 0) currentSlideIndex = slides.length - 1;
+
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }
+
+        function moveSlide(step) {
+            clearInterval(slideInterval);
+            currentSlideIndex += step;
+            showSlide(currentSlideIndex);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function currentSlide(index) {
+            clearInterval(slideInterval);
+            currentSlideIndex = index;
+            showSlide(currentSlideIndex);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('show-menu');
+                });
+            }
+
+            // Dropdown Menu Toggle for Mobile
+            document.querySelectorAll('.dropdown-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const parentLi = btn.parentElement;
+                        parentLi.classList.toggle('open-dropdown');
+                    }
+                });
+            });
+
+            // Scroll Animation (Fade In Effect)
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -30px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

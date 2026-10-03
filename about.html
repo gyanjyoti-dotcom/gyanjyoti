@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src https://www.youtube-nocookie.com https://maps.google.com https://www.google.com; upgrade-insecure-requests">
+    <title>About Us - Gyanjyoti Pathshala</title>
+    
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #122830;
+            --primary-light: #203a43;
+            --accent: #f2a900;
+            --accent-hover: #d99600;
+            --footer-bg: #274b8e;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- TOP HEADER --- */
+        .top-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 12px 0;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-section img {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            object-fit: cover;
+        }
+
+        .school-name h1 {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+        }
+
+        .school-name p {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .top-contact {
+            display: flex;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        .contact-item div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item small {
+            font-size: 10px;
+            color: #94a3b8;
+        }
+
+        .contact-item span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        .navbar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--primary);
+            padding: 15px 0;
+            width: 100%;
+            text-align: right;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            width: 100%;
+        }
+
+        .navbar > .nav-container > ul > li {
+            position: relative;
+        }
+
+        .navbar > .nav-container > ul > li > a {
+            display: block;
+            color: var(--primary);
+            padding: 18px 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .navbar > .nav-container > ul > li > a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0%;
+            height: 3.5px;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .navbar > .nav-container > ul > li:hover > a,
+        .navbar > .nav-container > ul > li > a.active {
+            color: var(--accent);
+        }
+
+        .navbar > .nav-container > ul > li:hover > a::after,
+        .navbar > .nav-container > ul > li > a.active::after {
+            width: 100%;
+        }
+
+        .navbar > .nav-container > ul > li.login-item {
+            margin-left: auto;
+        }
+
+        .login-btn-nav {
+            background: var(--footer-bg) !important;
+            color: #ffffff !important;
+            border-radius: 6px;
+            padding: 8px 16px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 10px rgba(39, 75, 142, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .login-btn-nav:hover {
+            background: var(--primary) !important;
+            color: var(--accent) !important;
+        }
+
+        .login-btn-nav::after {
+            display: none !important;
+        }
+
+        .navbar ul li ul.dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 240px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border-radius: 0 0 10px 10px;
+            z-index: 9999;
+            border-top: 3px solid var(--accent);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .navbar ul li ul.dropdown li a {
+            padding: 12px 20px;
+            font-size: 12.5px;
+            color: var(--text-dark);
+            display: block;
+            text-decoration: none;
+            border-bottom: 1px solid #f1f5f9;
+            transition: var(--transition);
+        }
+
+        .navbar ul li ul.dropdown li a:hover {
+            background: #fffbeb;
+            color: var(--primary);
+            padding-left: 25px;
+        }
+
+        @media screen and (min-width: 769px) {
+            .navbar ul li:hover > ul.dropdown {
+                display: block;
+            }
+        }
+
+        /* --- STAFF LOGIN MODAL & SHAKE STYLES --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(18, 40, 48, 0.7);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            width: 90%;
+            max-width: 420px;
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: popup 0.3s ease-out;
+        }
+
+        @keyframes popup {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .shake-modal {
+            animation: shake 0.4s ease-in-out !important;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 26px;
+            cursor: pointer;
+            color: #64748b;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover { color: #ef4444; }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-header i {
+            font-size: 38px;
+            color: #274b8e;
+            margin-bottom: 8px;
+        }
+
+        .login-header h3 { color: #1e293b; font-size: 20px; font-weight: 700; }
+        .login-header p { font-size: 12px; color: #64748b; }
+
+        .modal-box .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .modal-box label {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .modal-box input, .modal-box select {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .modal-box input:focus, .modal-box select:focus {
+            border-color: #274b8e;
+            box-shadow: 0 0 0 3px rgba(39, 75, 142, 0.1);
+        }
+
+        .input-error {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+
+        .login-error-msg {
+            display: none;
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fca5a5;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .portal-login-btn {
+            width: 100%;
+            background: #274b8e;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: 0.3s;
+        }
+
+        .portal-login-btn:hover { background: #122830; }
+
+        /* --- PAGE BANNER --- */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .page-banner::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle, rgba(242,169,0,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .page-banner h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .page-banner p {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* --- ABOUT CONTENT SECTION --- */
+        .about-wrapper {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 14px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 5px; height: 100%;
+            background: var(--accent);
+        }
+
+        .about-card h3 {
+            color: var(--primary);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-card h3 i {
+            color: var(--footer-bg);
+            font-size: 22px;
+        }
+
+        .about-card p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        /* --- FOOTER STYLES --- */
+        .main-footer {
+            background-color: var(--footer-bg);
+            color: #ffffff;
+            padding-top: 50px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1.5fr 0.8fr 1fr;
+            gap: 35px;
+            padding-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .title-underline {
+            width: 100%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.25);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .title-underline::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            width: 40px; height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-logo img {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+            object-fit: cover;
+        }
+
+        .footer-logo-text h3 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-logo-text p {
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        .links-grid {
+            display: flex;
+            gap: 30px;
+        }
+
+        .links-grid ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .links-grid ul li {
+            margin-bottom: 10px;
+        }
+
+        .links-grid ul li a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .links-grid ul li a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background: white;
+            color: var(--footer-bg);
+            transform: translateY(-4px);
+        }
+
+        .footer-contact-info {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 13px;
+            margin-bottom: 14px;
+            color: #e2e8f0;
+        }
+
+        .footer-contact-info li i {
+            font-size: 15px;
+            color: var(--accent);
+            width: 18px;
+        }
+
+        .footer-bottom {
+            background-color: #1a3466;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 12.5px;
+            color: #94a3b8;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media screen and (max-width: 992px) {
+            .top-contact { display: none; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                position: absolute;
+                top: 100%; left: 0;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            }
+            .navbar ul.show-menu { display: flex; }
+            .navbar > .nav-container > ul > li { width: 100%; border-bottom: 1px solid #f1f5f9; }
+            .navbar > .nav-container > ul > li > a { padding: 14px 20px; }
+            .navbar > .nav-container > ul > li > a::after { display: none; }
+            .navbar ul li ul.dropdown { position: static; box-shadow: none; width: 100%; background: #f8fafc; padding-left: 15px; border-top: none; }
+            .navbar ul li.open-dropdown > ul.dropdown { display: block; }
+            
+            .navbar > .nav-container > ul > li.login-item { margin-left: 0; }
+            .login-btn-nav { margin: 10px 20px !important; text-align: center; justify-content: center; }
+            
+            .grid-2-col { grid-template-columns: 1fr; }
+            .about-card { padding: 25px; }
+        }
+
+        @media screen and (max-width: 600px) {
+            .footer-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="school-logo.png" alt="Gyanjyoti Pathshala Logo" onerror="this.src='https://via.placeholder.com/55?text=Logo'">
+                <div class="school-name">
+                    <h1>GYANJYOTI PATHSHALA</h1>
+                    <p>ज्ञानज्योति पाठशाला</p>
+                </div>
+            </div>
+            <div class="top-contact">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <small>Call Us</small>
+                        <span>+977-01-XXXXXXX</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <small>Email Us</small>
+                        <span>info@gyanjyoti.edu.np</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars"></i> MENU
+            </button>
+            <ul id="navMenu">
+                <li>
+                    <a href="index.html"><i class="fas fa-home"></i> HOME</a>
+                </li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn"><i class="fas fa-info-circle"></i> ABOUT US <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="about.html">Message From Principal</a></li>
+                        <li><a href="about.html">Vision & Mission</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn"><i class="fas fa-graduation-cap"></i> ACADEMICS <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="school-details.html?type=students">Students Details</a></li>
+                        <li><a href="school-details.html?type=classes">Classes Details</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn"><i class="fas fa-images"></i> GALLERY & LINKS <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="gallery.html">Video Gallery</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="notice.html"><i class="fas fa-bullhorn"></i> NOTICE</a>
+                </li>
+                <li class="has-dropdown">
+                    <a href="javascript:void(0)" class="dropdown-btn"><i class="fas fa-id-card"></i> PROFILE <i class="fa fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="profile.html?type=management">MANAGEMENT COMMITTEE</a></li>
+                        <li><a href="profile.html?type=teaching">TEACHING STAFF</a></li>
+                        <li><a href="profile.html?type=admin">ADMINISTRATION STAFF</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="contact.html"><i class="fas fa-envelope"></i> CONTACT US</a>
+                </li>
+                <!-- STAFF LOGIN BUTTON -->
+                <li class="login-item">
+                    <a href="javascript:void(0)" class="login-btn-nav" onclick="openLoginModal()"><i class="fas fa-lock"></i> STAFF LOGIN</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-banner">
+        <h2>ABOUT OUR SCHOOL</h2>
+        <p>Discover Our Heritage, Vision, and Commitment to Excellence</p>
+    </div>
+
+    <div class="about-wrapper">
+        <div class="about-card fade-in">
+            <h3><i class="fas fa-quote-left"></i> Message From Principal</h3>
+            <p>Welcome to Gyanjyoti Pathshala. We are deeply committed to fostering a loving, supportive, and stimulating environment where each student is motivated to achieve academic excellence, character building, and strong moral values. Our integrated learning approach equips children to navigate the challenges of a rapidly changing global landscape.</p>
+        </div>
+
+        <div class="grid-2-col">
+            <div class="about-card fade-in">
+                <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                <p>To be a premier center of learning that inspires young minds to reach their full potential, creating enlightened and visionary global citizens who contribute positively to society.</p>
+            </div>
+
+            <div class="about-card fade-in">
+                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                <p>To empower students through practical knowledge, modern digital technology, interactive methodologies, and value-based education that shapes them into responsible leaders of tomorrow.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col logo-col">
+                <div class="footer-logo">
+                    <img src="school-logo.png" alt="Gyanjyoti Pathshala Logo" onerror="this.src='https://via.placeholder.com/50?text=Logo'">
+                    <div class="footer-logo-text">
+                        <h3>GYANJYOTI PATHSHALA</h3>
+                        <p>ज्ञानज्योति पाठशाला</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="title-underline"></div>
+                <div class="links-grid">
+                    <ul>
+                        <li><a href="index.html">Admission</a></li>
+                        <li><a href="notice.html">News</a></li>
+                        <li><a href="notice.html">Notice</a></li>
+                        <li><a href="notice.html">Holiday</a></li>
+                        <li><a href="notice.html">Event</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="profile.html?type=teaching">Teacher</a></li>
+                        <li><a href="profile.html?type=admin">Staff</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Social Links</h4>
+                <div class="title-underline"></div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100092568934940" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@khaptad.academy" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Get In Touch</h4>
+                <div class="title-underline"></div>
+                <ul class="footer-contact-info">
+                    <li><i class="fas fa-phone"></i> <span>+977-01-XXXXXXX</span></li>
+                    <li><i class="fas fa-envelope"></i> <span>info@gyanjyoti.edu.np</span></li>
+                    <li><i class="fas fa-map-marker-alt"></i> <span>Jai-5,Dhangadhi, Nepal</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gyanjyoti Pathshala | All Rights Reserved | www.gyanjyoti.edu.np</p>
+        </div>
+    </footer>
+
+    <!-- STAFF LOGIN MODAL POP-UP -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-box" id="modalBox">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <div class="login-header">
+                <i class="fas fa-user-shield"></i>
+                <h3>Staff Portal Login</h3>
+                <p>Gyanjyoti Pathshala Management System</p>
+            </div>
+
+            <!-- Error Banner -->
+            <div id="loginError" class="login-error-msg">
+                <i class="fas fa-exclamation-triangle"></i> Invalid Staff ID or Password!
+            </div>
+
+            <form id="staffLoginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="staffId"><i class="fas fa-id-badge"></i> Staff ID / Username</label>
+                    <input type="text" id="staffId" placeholder="Enter your Staff ID" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="staffPassword"><i class="fas fa-key"></i> Password</label>
+                    <input type="password" id="staffPassword" placeholder="Enter Password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="staffRole"><i class="fas fa-user-tag"></i> Login As</label>
+                    <select id="staffRole" required>
+                        <option value="teacher">Teacher</option>
+                        <option value="accountant">Accountant / Admin</option>
+                        <option value="admin">Principal / Super Admin</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="portal-login-btn">Login to Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CODE -->
+        <script src="js/auth.js"></script>
+<script>
+
+
+
+
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target == modal) {
+                closeLoginModal();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('show-menu');
+                });
+            }
+
+            document.querySelectorAll('.dropdown-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const parentLi = btn.parentElement;
+                        parentLi.classList.toggle('open-dropdown');
+                    }
+                });
+            });
+
+            const faders = document.querySelectorAll('.fade-in');
+            const appearOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -30px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>
